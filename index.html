@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- ===== Google Search Console Verification ===== -->
+  <meta name="google-site-verification" content="mLworcsiofOhMsDaAZ9Vzi7Swi1QErd75vJHjTm8bxw" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>مولد رمز عبور امن | ساخت پسورد قوی | Password Generator</title>
+
+  <meta name="description" content="مولد آنلاین و رایگان رمز عبور امن — ساخت پسورد قوی با طول دلخواه، حروف بزرگ و کوچک، اعداد، نمادها و قدرت‌سنجی. پشتیبانی از ۳ زبان و دو تم.">
+  <meta name="keywords" content="Password Generator, مولد رمز عبور, ساخت رمز عبور امن, تولید پسورد, رمز عبور قوی, پسورد ساز آنلاین, تولید رمز تصادفی">
+  <meta name="author" content="Amirali Kamani">
+  <meta name="publisher" content="psoa.ir">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+  <link rel="canonical" href="https://amiralikop90.github.io/Password-Generator/">
+  <link rel="alternate" hreflang="fa" href="https://amiralikop90.github.io/Password-Generator/">
+  <link rel="alternate" hreflang="en" href="https://amiralikop90.github.io/Password-Generator/?lang=en">
+  <link rel="alternate" hreflang="zh" href="https://amiralikop90.github.io/Password-Generator/?lang=zh">
+  <link rel="alternate" hreflang="x-default" href="https://amiralikop90.github.io/Password-Generator/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://amiralikop90.github.io/Password-Generator/">
+  <meta property="og:title" content="مولد رمز عبور امن — ساخت پسورد قوی">
+  <meta property="og:description" content="ساخت رمز عبور قوی با طول دلخواه، حروف، اعداد و نمادها. با قدرت‌سنجی زنده.">
+  <meta property="og:locale" content="fa_IR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:site_name" content="Password Generator">
+  <meta property="og:image" content="https://psoa.ir/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="مولد رمز عبور امن">
+  <meta name="twitter:description" content="ساخت رمز عبور قوی با قدرت‌سنجی. رایگان و بدون ثبت‌نام.">
+  <meta name="twitter:image" content="https://psoa.ir/og-image.png">
+
+  <link rel="icon" type="image/x-icon" href="https://psoa.ir/favicon.ico">
+  <link rel="apple-touch-icon" href="https://psoa.ir/favicon.ico">
+  <meta name="theme-color" content="#6366f1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Password Generator",
+    "url": "https://amiralikop90.github.io/Password-Generator/",
+    "description": "مولد آنلاین رایگان رمز عبور امن با قدرت‌سنجی.",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Amirali Kamani", "url": "https://psoa.ir" },
+    "inLanguage": ["fa", "en", "zh"]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #f5f7fa; --surface: #ffffff; --surface-2: #f8fafc;
+      --text: #1a202c; --text-muted: #718096; --border: #e2e8f0;
+      --accent-1: #6366f1; --accent-2: #8b5cf6;
+      --accent-glow: rgba(99, 102, 241, 0.25);
+      --code-bg: #1a1d23; --code-text: #7dd3a0;
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+      --success: #10b981; --warning: #f59e0b; --danger: #ef4444;
+    }
+    [data-theme="dark"] {
+      --bg: #0a0a0a; --surface: #141414; --surface-2: #1c1c1c;
+      --text: #f0f0f0; --text-muted: #8a8a8a; --border: #262626;
+      --accent-1: #818cf8; --accent-2: #a78bfa;
+      --accent-glow: rgba(129, 140, 248, 0.3);
+      --code-bg: #0d0d0d; --code-text: #86efac;
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.6);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.8);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Inter','Segoe UI','PingFang SC','Microsoft YaHei',Tahoma,sans-serif;
+      border-radius: 0 !important;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    body {
+      background: var(--bg);
+      background-image:
+        radial-gradient(circle at 20% 10%, var(--accent-glow), transparent 40%),
+        radial-gradient(circle at 80% 90%, var(--accent-glow), transparent 40%);
+      min-height: 100vh; padding: 24px;
+      display: flex; justify-content: center; align-items: center;
+      color: var(--text); overflow-x: hidden;
+    }
+    .top-bar { position: fixed; top: 20px; left: 20px; right: 20px;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px; z-index: 100; pointer-events: none;
+    }
+    .top-bar > * { pointer-events: auto; }
+    .theme-toggle { width: 48px; height: 48px;
+      border: 1px solid var(--border); background: var(--surface);
+      color: var(--text); cursor: pointer; font-size: 20px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .theme-toggle:hover { transform: scale(1.1) rotate(15deg); }
+    .lang-switcher { display: flex; border: 1px solid var(--border);
+      background: var(--surface); box-shadow: var(--shadow-md);
+    }
+    .lang-btn { padding: 12px 16px; border: none;
+      border-left: 1px solid var(--border); background: transparent;
+      color: var(--text-muted); cursor: pointer; font-size: 13px;
+      font-weight: 600; transition: all 0.2s; font-family: inherit;
+    }
+    .lang-btn:first-child { border-left: none; }
+    .lang-btn:hover { color: var(--text); background: var(--surface-2); }
+    .lang-btn.active {
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      color: #fff;
+    }
+    .container { background: var(--surface); border: 1px solid var(--border);
+      padding: 40px; max-width: 800px; width: 100%;
+      box-shadow: var(--shadow-lg); position: relative;
+      animation: fadeIn 0.5s ease; margin-top: 40px;
+    }
+    .container::before, .container::after {
+      content: ''; position: absolute; width: 20px; height: 20px;
+      border: 2px solid var(--accent-1);
+    }
+    .container::before { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+    .container::after { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .promo-banner {
+      display: block; text-decoration: none; color: inherit;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      padding: 16px 20px; margin-bottom: 24px;
+      position: relative; overflow: hidden; cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 16px var(--accent-glow);
+    }
+    .promo-banner::before {
+      content: ''; position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: shimmer 3s infinite;
+    }
+    @keyframes shimmer { 0% { left: -100%; } 100% { left: 100%; } }
+    .promo-banner:hover { transform: translateY(-2px); }
+    .promo-content { display: flex; align-items: center; gap: 14px; position: relative; z-index: 1; }
+    .promo-icon { font-size: 28px; animation: bounce 2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+    .promo-text { flex: 1; color: #fff; }
+    .promo-title { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+    .promo-subtitle { font-size: 12px; opacity: 0.9; }
+    .promo-url { font-size: 12px; font-weight: 700; color: #fff;
+      background: rgba(255,255,255,0.2); padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.3); white-space: nowrap;
+    }
+    h1 { color: var(--text); margin-bottom: 10px; text-align: center;
+      font-size: 26px; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subtitle { text-align: center; color: var(--text-muted); margin-bottom: 30px; font-size: 14px; }
+
+    /* ===== Password Display ===== */
+    .password-display {
+      background: var(--code-bg); color: var(--code-text);
+      padding: 24px 20px;
+      font-family: 'JetBrains Mono','Fira Code','Consolas','Monaco',monospace;
+      font-size: 22px; font-weight: 600;
+      text-align: center;
+      border: 1px solid var(--border);
+      direction: ltr;
+      word-break: break-all;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+      min-height: 80px;
+      display: flex; align-items: center; justify-content: center;
+      user-select: all;
+      position: relative;
+    }
+    .password-display.flash {
+      animation: flash 0.4s ease;
+    }
+    @keyframes flash {
+      0%, 100% { background: var(--code-bg); }
+      50% { background: rgba(99, 102, 241, 0.25); }
+    }
+
+    /* ===== Strength Meter ===== */
+    .strength-container {
+      margin-bottom: 24px;
+    }
+    .strength-bar {
+      display: flex; gap: 4px; margin-bottom: 8px;
+    }
+    .strength-segment {
+      flex: 1; height: 6px;
+      background: var(--border);
+      transition: background 0.3s;
+    }
+    .strength-segment.active.weak { background: var(--danger); }
+    .strength-segment.active.medium { background: var(--warning); }
+    .strength-segment.active.strong { background: var(--success); }
+    .strength-label {
+      display: flex; justify-content: space-between;
+      font-size: 12px; color: var(--text-muted);
+    }
+    .strength-label strong {
+      color: var(--text);
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+    .strength-text.weak { color: var(--danger); }
+    .strength-text.medium { color: var(--warning); }
+    .strength-text.strong { color: var(--success); }
+
+    /* ===== Length Slider ===== */
+    .length-group {
+      margin-bottom: 20px;
+    }
+    .length-header {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 10px;
+    }
+    .length-header label {
+      font-size: 13px; font-weight: 700;
+      color: var(--text);
+    }
+    .length-value {
+      font-family: 'JetBrains Mono','Fira Code',monospace;
+      font-size: 18px; font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      padding: 4px 14px;
+      min-width: 55px; text-align: center;
+    }
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      background: var(--border);
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px; height: 22px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      cursor: pointer;
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 22px; height: 22px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+
+    /* ===== Options ===== */
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .option-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 14px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .option-item:hover { border-color: var(--accent-1); }
+    .option-item.checked {
+      border-color: var(--accent-1);
+      background: var(--surface);
+    }
+    .option-checkbox {
+      width: 22px; height: 22px;
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
+      background: var(--surface);
+    }
+    .option-item.checked .option-checkbox {
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      border-color: var(--accent-1);
+    }
+    .option-checkbox::after {
+      content: '✓';
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .option-item.checked .option-checkbox::after { opacity: 1; }
+    .option-label {
+      font-size: 13px; font-weight: 600;
+      color: var(--text);
+      flex: 1;
+    }
+    .option-example {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono','Fira Code',monospace;
+      margin-top: 2px;
+    }
+
+    /* ===== Buttons ===== */
+    .buttons {
+      display: flex; gap: 0; flex-wrap: wrap; border: 1px solid var(--border);
+    }
+    button.action {
+      padding: 14px 20px; border: none;
+      border-left: 1px solid var(--border);
+      cursor: pointer; font-size: 14px; font-weight: 500;
+      transition: all 0.25s;
+      background: var(--surface-2); color: var(--text);
+      display: inline-flex; align-items: center; gap: 6px;
+      justify-content: center; font-family: inherit;
+    }
+    button.action:first-child { border-left: none; }
+    button.action:hover { background: var(--surface); color: var(--accent-1); }
+    button.action:active { transform: scale(0.98); }
+    button.action.primary {
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      color: #fff; font-weight: 600;
+      flex: 1;
+    }
+    button.action.primary:hover { filter: brightness(1.1); color: #fff; }
+
+    /* ===== FAQ ===== */
+    .seo-content { margin-top: 40px; padding-top: 30px;
+      border-top: 1px solid var(--border); color: var(--text);
+      font-size: 14px; line-height: 1.9;
+    }
+    .seo-content h2 { font-size: 18px; font-weight: 700; margin-bottom: 14px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .seo-content h3 { font-size: 15px; font-weight: 600; margin: 18px 0 8px; color: var(--text); }
+    .seo-content p { color: var(--text-muted); margin-bottom: 12px; }
+    .seo-content ul { list-style: none; padding-right: 0; margin-bottom: 14px; }
+    .seo-content li { padding: 6px 0; color: var(--text-muted);
+      position: relative; padding-right: 22px;
+    }
+    .seo-content li::before { content: '✓'; position: absolute; right: 0;
+      color: var(--accent-1); font-weight: 700;
+    }
+    .faq-item { border: 1px solid var(--border); padding: 14px 18px;
+      margin-bottom: 10px; background: var(--surface-2);
+    }
+    .faq-item summary { cursor: pointer; font-weight: 600;
+      color: var(--text); font-size: 14px; list-style: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::before { content: '▸ '; color: var(--accent-1);
+      transition: transform 0.2s; display: inline-block;
+    }
+    .faq-item[open] summary::before { transform: rotate(90deg); }
+    .faq-item p { margin-top: 10px; color: var(--text-muted);
+      font-size: 13px; line-height: 1.8;
+    }
+
+    .footer { text-align: center; margin-top: 28px; padding-top: 22px;
+      border-top: 1px solid var(--border); font-size: 13px;
+      color: var(--text-muted); line-height: 1.9;
+    }
+    .footer a { color: var(--accent-1); text-decoration: none; font-weight: 600; }
+    .footer a:hover { color: var(--accent-2); text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .container { padding: 24px; margin-top: 60px; }
+      h1 { font-size: 20px; }
+      .theme-toggle { width: 42px; height: 42px; font-size: 18px; }
+      .lang-btn { padding: 10px 10px; font-size: 11px; }
+      .top-bar { top: 12px; left: 12px; right: 12px; }
+      .promo-content { flex-wrap: wrap; }
+      .promo-url { font-size: 11px; padding: 6px 10px; }
+      .promo-icon { font-size: 22px; }
+      .password-display { font-size: 16px; padding: 18px 14px; }
+      .options-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">🌙</button>
+    <nav class="lang-switcher" aria-label="انتخاب زبان">
+      <button class="lang-btn active" data-lang="fa" aria-label="فارسی">🇮🇷 فارسی</button>
+      <button class="lang-btn" data-lang="en" aria-label="English">🇬🇧 English</button>
+      <button class="lang-btn" data-lang="zh" aria-label="中文">🇨🇳 中文</button>
+    </nav>
+  </div>
+
+  <main class="container">
+
+    <a href="https://psoa.ir" target="_blank" rel="noopener" class="promo-banner" aria-label="سایت رسمی امیرعلی کمانی">
+      <div class="promo-content">
+        <span class="promo-icon" aria-hidden="true">🚀</span>
+        <div class="promo-text">
+          <div class="promo-title" data-i18n="promoTitle">سایت رسمی من — psoa.ir</div>
+          <div class="promo-subtitle" data-i18n="promoSubtitle">یه سر بزن، چیزهای جالبی داری!</div>
+        </div>
+        <span class="promo-url">psoa.ir ←</span>
+      </div>
+    </a>
+
+    <h1 id="title">🔐 مولد رمز عبور امن</h1>
+    <p class="subtitle" id="subtitle">رمز عبور قوی و امن بساز — با قدرت‌سنجی و تنظیمات دلخواه</p>
+
+    <!-- Password Display -->
+    <div class="password-display" id="passwordDisplay" dir="ltr">—</div>
+
+    <!-- Strength Meter -->
+    <div class="strength-container">
+      <div class="strength-bar" id="strengthBar">
+        <div class="strength-segment"></div>
+        <div class="strength-segment"></div>
+        <div class="strength-segment"></div>
+        <div class="strength-segment"></div>
+        <div class="strength-segment"></div>
+      </div>
+      <div class="strength-label">
+        <span data-i18n="strengthLabel">قدرت رمز:</span>
+        <strong class="strength-text" id="strengthText" data-i18n="strengthNone">—</strong>
+      </div>
+    </div>
+
+    <!-- Length Slider -->
+    <div class="length-group">
+      <div class="length-header">
+        <label data-i18n="lengthLabel">طول رمز عبور</label>
+        <span class="length-value" id="lengthValue">16</span>
+      </div>
+      <input type="range" id="lengthSlider" min="4" max="64" value="16" step="1">
+    </div>
+
+    <!-- Options -->
+    <div class="options-grid">
+      <div class="option-item checked" data-option="lowercase">
+        <div class="option-checkbox"></div>
+        <div class="option-label">
+          <div data-i18n="optLower">حروف کوچک</div>
+          <div class="option-example">abc</div>
+        </div>
+      </div>
+      <div class="option-item checked" data-option="uppercase">
+        <div class="option-checkbox"></div>
+        <div class="option-label">
+          <div data-i18n="optUpper">حروف بزرگ</div>
+          <div class="option-example">ABC</div>
+        </div>
+      </div>
+      <div class="option-item checked" data-option="numbers">
+        <div class="option-checkbox"></div>
+        <div class="option-label">
+          <div data-i18n="optNumbers">اعداد</div>
+          <div class="option-example">123</div>
+        </div>
+      </div>
+      <div class="option-item checked" data-option="symbols">
+        <div class="option-checkbox"></div>
+        <div class="option-label">
+          <div data-i18n="optSymbols">نمادها</div>
+          <div class="option-example">!@#$</div>
+        </div>
+      </div>
+      <div class="option-item" data-option="excludeSimilar">
+        <div class="option-checkbox"></div>
+        <div class="option-label">
+          <div data-i18n="optSimilar">حذف حروف مشابه</div>
+          <div class="option-example">il1Lo0O</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button id="generateBtn" class="action primary" data-i18n="btnGenerate">🔄 تولید رمز عبور</button>
+      <button id="copyBtn" class="action" data-i18n="btnCopy">📋 کپی</button>
+    </div>
+
+    <!-- SEO Content -->
+    <section class="seo-content">
+      <h2 data-i18n="seoH2">درباره‌ی مولد رمز عبور</h2>
+      <p data-i18n="seoP1">مولد رمز عبور آنلاین و رایگان ما به شما کمک می‌کند تا در لحظه پسوردهای قوی و امن بسازید. تمام پردازش‌ها در مرورگر خود شما انجام می‌شود و هیچ رمزی به سرور ارسال یا ذخیره نمی‌شود.</p>
+
+      <h3 data-i18n="seoH3Features">ویژگی‌های کلیدی</h3>
+      <ul>
+        <li data-i18n="feat1">🔐 تولید رمزهای کاملاً تصادفی با Web Crypto API</li>
+        <li data-i18n="feat2">📏 انتخاب طول دلخواه از ۴ تا ۶۴ کاراکتر</li>
+        <li data-i18n="feat3">🔤 ترکیب حروف کوچک، بزرگ، اعداد و نمادها</li>
+        <li data-i18n="feat4">🚫 حذف حروف مشابه مثل il1Lo0O</li>
+        <li data-i18n="feat5">📊 قدرت‌سنجی زنده و دقیق</li>
+        <li data-i18n="feat6">📋 کپی سریع در کلیپ‌بورد</li>
+        <li data-i18n="feat7">🌐 پشتیبانی از ۳ زبان</li>
+        <li data-i18n="feat8">🌙 دو تم تاریک و روشن</li>
+      </ul>
+
+      <h3 data-i18n="seoH3Faq">سوالات متداول</h3>
+
+      <details class="faq-item">
+        <summary data-i18n="faqQ1">آیا رمزهای تولید شده امن هستند؟</summary>
+        <p data-i18n="faqA1">بله، از Web Crypto API مرورگر استفاده می‌کنیم که امن‌ترین روش تولید اعداد تصادفی هست. هیچ داده‌ای به سرور ارسال نمی‌شه.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary data-i18n="faqQ2">رمزهای تولید شده جایی ذخیره می‌شن؟</summary>
+        <p data-i18n="faqA2">خیر، تمام پردازش‌ها در مرورگر شما انجام می‌شه و هیچ رمزی جایی ذخیره یا ارسال نمی‌شه.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary data-i18n="faqQ3">چه طولی برای رمز عبور مناسبه؟</summary>
+        <p data-i18n="faqA3">حداقل ۱۲ کاراکتر توصیه می‌شه. برای حساب‌های مهم مثل ایمیل و بانک، ۱۶ کاراکتر یا بیشتر با ترکیب همه‌ی کاراکترها.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary data-i18n="faqQ4">حذف حروف مشابه چیه؟</summary>
+        <p data-i18n="faqA4">حروفی مثل i, l, 1, L, o, 0, O که شبیه هم هستن و ممکنه در تایپ اشتباه بشن، از رمز حذف می‌شن. این گزینه برای رمزهایی که می‌خواید دستی وارد کنید مناسبه.</p>
+      </details>
+    </section>
+
+    <footer class="footer">
+      <span data-i18n="footerText">برای دیدن لایسنس این وب‌سایت، لطفاً به</span>
+      <a href="https://psoa.ir/licens.html" target="_blank" rel="noopener">psoa.ir/licens.html</a>
+      <span data-i18n="footerText2">مراجعه کنید.</span>
+    </footer>
+
+  </main>
+
+  <script>
+    // ============ STATE ============
+    let options = {
+      lowercase: true,
+      uppercase: true,
+      numbers: true,
+      symbols: true,
+      excludeSimilar: false
+    };
+    let currentPassword = '';
+
+    // ============ CHARACTER SETS ============
+    const CHARSETS = {
+      lowercase: 'abcdefghijklmnopqrstuvwxyz',
+      uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+      numbers: '0123456789',
+      symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?'
+    };
+    const SIMILAR_CHARS = 'il1Lo0O';
+
+    // ============ DOM ELEMENTS ============
+    const html = document.documentElement;
+    const titleEl = document.getElementById('title');
+    const subtitleEl = document.getElementById('subtitle');
+    const passwordDisplay = document.getElementById('passwordDisplay');
+    const strengthBar = document.getElementById('strengthBar');
+    const strengthText = document.getElementById('strengthText');
+    const lengthSlider = document.getElementById('lengthSlider');
+    const lengthValue = document.getElementById('lengthValue');
+    const generateBtn = document.getElementById('generateBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const themeToggle = document.getElementById('themeToggle');
+    const optionItems = document.querySelectorAll('.option-item');
+    const langBtns = document.querySelectorAll('.lang-btn');
+
+    // ============ TRANSLATIONS ============
+    const translations = {
+      fa: {
+        title: '🔐 مولد رمز عبور امن',
+        subtitle: 'رمز عبور قوی و امن بساز — با قدرت‌سنجی و تنظیمات دلخواه',
+        strengthLabel: 'قدرت رمز:',
+        strengthNone: '—',
+        strengthWeak: 'ضعیف',
+        strengthMedium: 'متوسط',
+        strengthStrong: 'قوی',
+        strengthVeryStrong: 'خیلی قوی',
+        lengthLabel: 'طول رمز عبور',
+        optLower: 'حروف کوچک',
+        optUpper: 'حروف بزرگ',
+        optNumbers: 'اعداد',
+        optSymbols: 'نمادها',
+        optSimilar: 'حذف حروف مشابه',
+        btnGenerate: '🔄 تولید رمز عبور',
+        btnCopy: '📋 کپی',
+        copied: '✅ کپی شد!',
+        errorNoOption: '⚠️ حداقل یک گزینه رو انتخاب کن',
+        promoTitle: 'سایت رسمی من — psoa.ir',
+        promoSubtitle: 'یه سر بزن، چیزهای جالبی داری!',
+        footerText: 'برای دیدن لایسنس این وب‌سایت، لطفاً به',
+        footerText2: 'مراجعه کنید.',
+        seoH2: 'درباره‌ی مولد رمز عبور',
+        seoP1: 'مولد رمز عبور آنلاین و رایگان ما به شما کمک می‌کند تا در لحظه پسوردهای قوی و امن بسازید. تمام پردازش‌ها در مرورگر خود شما انجام می‌شود و هیچ رمزی به سرور ارسال یا ذخیره نمی‌شود.',
+        seoH3Features: 'ویژگی‌های کلیدی',
+        feat1: '🔐 تولید رمزهای کاملاً تصادفی با Web Crypto API',
+        feat2: '📏 انتخاب طول دلخواه از ۴ تا ۶۴ کاراکتر',
+        feat3: '🔤 ترکیب حروف کوچک، بزرگ، اعداد و نمادها',
+        feat4: '🚫 حذف حروف مشابه مثل il1Lo0O',
+        feat5: '📊 قدرت‌سنجی زنده و دقیق',
+        feat6: '📋 کپی سریع در کلیپ‌بورد',
+        feat7: '🌐 پشتیبانی از ۳ زبان',
+        feat8: '🌙 دو تم تاریک و روشن',
+        seoH3Faq: 'سوالات متداول',
+        faqQ1: 'آیا رمزهای تولید شده امن هستند؟',
+        faqA1: 'بله، از Web Crypto API مرورگر استفاده می‌کنیم که امن‌ترین روش تولید اعداد تصادفی هست. هیچ داده‌ای به سرور ارسال نمی‌شه.',
+        faqQ2: 'رمزهای تولید شده جایی ذخیره می‌شن؟',
+        faqA2: 'خیر، تمام پردازش‌ها در مرورگر شما انجام می‌شه و هیچ رمزی جایی ذخیره یا ارسال نمی‌شه.',
+        faqQ3: 'چه طولی برای رمز عبور مناسبه؟',
+        faqA3: 'حداقل ۱۲ کاراکتر توصیه می‌شه. برای حساب‌های مهم مثل ایمیل و بانک، ۱۶ کاراکتر یا بیشتر با ترکیب همه‌ی کاراکترها.',
+        faqQ4: 'حذف حروف مشابه چیه؟',
+        faqA4: 'حروفی مثل i, l, 1, L, o, 0, O که شبیه هم هستن و ممکنه در تایپ اشتباه بشن، از رمز حذف می‌شن. این گزینه برای رمزهایی که می‌خواید دستی وارد کنید مناسبه.'
+      },
+      en: {
+        title: '🔐 Secure Password Generator',
+        subtitle: 'Create strong, secure passwords — with live strength meter',
+        strengthLabel: 'Strength:',
+        strengthNone: '—',
+        strengthWeak: 'Weak',
+        strengthMedium: 'Medium',
+        strengthStrong: 'Strong',
+        strengthVeryStrong: 'Very Strong',
+        lengthLabel: 'Password Length',
+        optLower: 'Lowercase',
+        optUpper: 'Uppercase',
+        optNumbers: 'Numbers',
+        optSymbols: 'Symbols',
+        optSimilar: 'Exclude Similar',
+        btnGenerate: '🔄 Generate Password',
+        btnCopy: '📋 Copy',
+        copied: '✅ Copied!',
+        errorNoOption: '⚠️ Select at least one option',
+        promoTitle: 'My official website — psoa.ir',
+        promoSubtitle: 'Drop by, there is something interesting!',
+        footerText: 'To view the license of this website, please visit',
+        footerText2: '.',
+        seoH2: 'About the Password Generator',
+        seoP1: 'Our free online password generator helps you create strong and secure passwords instantly. All processing happens in your browser — no password is ever sent to or stored on any server.',
+        seoH3Features: 'Key Features',
+        feat1: '🔐 Fully random passwords using Web Crypto API',
+        feat2: '📏 Custom length from 4 to 64 characters',
+        feat3: '🔤 Mix lowercase, uppercase, numbers, and symbols',
+        feat4: '🚫 Exclude similar characters like il1Lo0O',
+        feat5: '📊 Live and accurate strength meter',
+        feat6: '📋 Quick copy to clipboard',
+        feat7: '🌐 Supports 3 languages',
+        feat8: '🌙 Dual themes: dark and light',
+        seoH3Faq: 'Frequently Asked Questions',
+        faqQ1: 'Are the generated passwords secure?',
+        faqA1: 'Yes, we use the browser\'s Web Crypto API, which is the most secure way to generate random numbers. No data is sent to any server.',
+        faqQ2: 'Are the generated passwords stored anywhere?',
+        faqA2: 'No, all processing happens in your browser and no password is ever stored or sent anywhere.',
+        faqQ3: 'What length should I use for my password?',
+        faqA3: 'At least 12 characters is recommended. For important accounts like email and banking, use 16 characters or more with a mix of all character types.',
+        faqQ4: 'What is exclude similar characters?',
+        faqA4: 'Characters like i, l, 1, L, o, 0, O that look alike and could be confused when typing are removed. This is useful for passwords you might need to type manually.'
+      },
+      zh: {
+        title: '🔐 安全密码生成器',
+        subtitle: '创建强大、安全的密码 — 带实时强度计',
+        strengthLabel: '强度：',
+        strengthNone: '—',
+        strengthWeak: '弱',
+        strengthMedium: '中',
+        strengthStrong: '强',
+        strengthVeryStrong: '非常强',
+        lengthLabel: '密码长度',
+        optLower: '小写字母',
+        optUpper: '大写字母',
+        optNumbers: '数字',
+        optSymbols: '符号',
+        optSimilar: '排除相似字符',
+        btnGenerate: '🔄 生成密码',
+        btnCopy: '📋 复制',
+        copied: '✅ 已复制！',
+        errorNoOption: '⚠️ 至少选择一个选项',
+        promoTitle: '我的官方网站 — psoa.ir',
+        promoSubtitle: '来看看，会很有趣！',
+        footerText: '要查看本网站的许可证，请访问',
+        footerText2: '。',
+        seoH2: '关于密码生成器',
+        seoP1: '我们的免费在线密码生成器帮助您立即创建强大而安全的密码。所有处理都在您的浏览器中进行——任何密码都不会发送到或存储在任何服务器上。',
+        seoH3Features: '主要功能',
+        feat1: '🔐 使用 Web Crypto API 生成完全随机的密码',
+        feat2: '📏 自定义长度从 4 到 64 个字符',
+        feat3: '🔤 混合小写、大写、数字和符号',
+        feat4: '🚫 排除相似字符，如 il1Lo0O',
+        feat5: '📊 实时准确的强度计',
+        feat6: '📋 快速复制到剪贴板',
+        feat7: '🌐 支持 3 种语言',
+        feat8: '🌙 双主题：深色和浅色',
+        seoH3Faq: '常见问题',
+        faqQ1: '生成的密码安全吗？',
+        faqA1: '是的，我们使用浏览器的 Web Crypto API，这是生成随机数最安全的方式。不会向任何服务器发送数据。',
+        faqQ2: '生成的密码会存储在哪里吗？',
+        faqA2: '不会，所有处理都在您的浏览器中进行，任何密码都不会存储或发送到任何地方。',
+        faqQ3: '密码应该用多长？',
+        faqA3: '建议至少 12 个字符。对于电子邮件和银行等重要账户，请使用 16 个或更多字符，并混合所有字符类型。',
+        faqQ4: '什么是排除相似字符？',
+        faqA4: '像 i、l、1、L、o、0、O 这样看起来相似且在输入时可能混淆的字符会被移除。这对于您可能需要手动输入的密码很有用。'
+      }
+    };
+
+    const rtlLangs = ['fa'];
+    let currentLang = localStorage.getItem('pw_lang') || 'fa';
+    if (!translations[currentLang]) currentLang = 'fa';
+    let currentTheme = localStorage.getItem('pw_theme') || 'light';
+
+    // ============ THEME ============
+    function applyTheme(theme) {
+      html.setAttribute('data-theme', theme);
+      themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+      currentTheme = theme;
+      localStorage.setItem('pw_theme', theme);
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#f5f7fa');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // ============ LANGUAGE ============
+    function t(key) {
+      return translations[currentLang][key] || translations.en[key] || key;
+    }
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('pw_lang', lang);
+      const dir = rtlLangs.includes(lang) ? 'rtl' : 'ltr';
+      html.setAttribute('dir', dir);
+      html.setAttribute('lang', lang);
+
+      titleEl.textContent = t('title');
+      subtitleEl.textContent = t('subtitle');
+      document.title = t('title');
+
+      langBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        el.textContent = t(key);
+      });
+
+      updateStrengthDisplay();
+    }
+
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+    });
+
+    // ============ RANDOM ============
+    function getRandomInt(max) {
+      // Cryptographically secure random
+      const array = new Uint32Array(1);
+      crypto.getRandomValues(array);
+      return array[0] % max;
+    }
+
+    // ============ PASSWORD GENERATION ============
+    function buildCharset() {
+      let charset = '';
+      if (options.lowercase) charset += CHARSETS.lowercase;
+      if (options.uppercase) charset += CHARSETS.uppercase;
+      if (options.numbers) charset += CHARSETS.numbers;
+      if (options.symbols) charset += CHARSETS.symbols;
+
+      if (options.excludeSimilar) {
+        charset = charset.split('').filter(c => !SIMILAR_CHARS.includes(c)).join('');
+      }
+
+      return charset;
+    }
+
+    function generatePassword() {
+      const length = parseInt(lengthSlider.value);
+      const charset = buildCharset();
+
+      if (!charset) {
+        passwordDisplay.textContent = t('errorNoOption');
+        currentPassword = '';
+        return;
+      }
+
+      let password = '';
+      for (let i = 0; i < length; i++) {
+        password += charset[getRandomInt(charset.length)];
+      }
+
+      currentPassword = password;
+      passwordDisplay.textContent = password;
+      passwordDisplay.classList.remove('flash');
+      void passwordDisplay.offsetWidth;
+      passwordDisplay.classList.add('flash');
+
+      updateStrength(password);
+    }
+
+    // ============ STRENGTH ============
+    function calculateStrength(password) {
+      if (!password) return { score: 0, level: 'none' };
+
+      let score = 0;
+      const length = password.length;
+
+      // Length points
+      if (length >= 8) score += 1;
+      if (length >= 12) score += 1;
+      if (length >= 16) score += 1;
+      if (length >= 24) score += 1;
+
+      // Character variety
+      let varietyCount = 0;
+      if (/[a-z]/.test(password)) varietyCount++;
+      if (/[A-Z]/.test(password)) varietyCount++;
+      if (/[0-9]/.test(password)) varietyCount++;
+      if (/[^a-zA-Z0-9]/.test(password)) varietyCount++;
+
+      score += varietyCount;
+
+      // Determine level
+      let level = 'weak';
+      if (score >= 7) level = 'strong';
+      else if (score >= 5) level = 'medium';
+
+      // Very strong check
+      if (score >= 7 && length >= 16 && varietyCount === 4) level = 'strong';
+
+      return { score: Math.min(score, 7), level };
+    }
+
+    function updateStrength(password) {
+      const { score, level } = calculateStrength(password);
+      const segments = strengthBar.querySelectorAll('.strength-segment');
+      const filled = Math.min(Math.ceil(score / 7 * 5), 5);
+
+      segments.forEach((seg, i) => {
+        seg.classList.remove('active', 'weak', 'medium', 'strong');
+        if (i < filled) {
+          seg.classList.add('active', level);
+        }
+      });
+
+      strengthText.classList.remove('weak', 'medium', 'strong');
+
+      if (!password || level === 'none') {
+        strengthText.textContent = t('strengthNone');
+        strengthText.classList.remove('weak', 'medium', 'strong');
+      } else if (level === 'weak') {
+        strengthText.textContent = t('strengthWeak');
+        strengthText.classList.add('weak');
+      } else if (level === 'medium') {
+        strengthText.textContent = t('strengthMedium');
+        strengthText.classList.add('medium');
+      } else {
+        strengthText.textContent = t('strengthStrong');
+        strengthText.classList.add('strong');
+      }
+    }
+
+    function updateStrengthDisplay() {
+      if (currentPassword) updateStrength(currentPassword);
+    }
+
+    // ============ EVENT LISTENERS ============
+    lengthSlider.addEventListener('input', () => {
+      lengthValue.textContent = lengthSlider.value;
+      generatePassword();
+    });
+
+    optionItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const option = item.dataset.option;
+        options[option] = !options[option];
+        item.classList.toggle('checked', options[option]);
+        generatePassword();
+      });
+    });
+
+    generateBtn.addEventListener('click', () => {
+      generatePassword();
+    });
+
+    copyBtn.addEventListener('click', () => {
+      if (!currentPassword) return;
+      navigator.clipboard.writeText(currentPassword).then(() => {
+        const orig = copyBtn.textContent;
+        copyBtn.textContent = t('copied');
+        setTimeout(() => copyBtn.textContent = orig, 1500);
+      });
+    });
+
+    // ============ INIT ============
+    applyTheme(currentTheme);
+    applyLanguage(currentLang);
+    generatePassword();
+  </script>
+</body>
+</html>
