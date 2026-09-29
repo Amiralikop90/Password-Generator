@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 
   <!-- ===== Google Search Console Verification ===== -->
-  <meta name="google-site-verification" content="mLworcsiofOhMsDaAZ9Vzi7Swi1QErd75vJHjTm8bxw" />
+  <meta name="google-site-verification" content="t61IyN_aMENn54-JeerZo1WNgassK07g8_S8HN0hWuE" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -168,7 +168,6 @@
     }
     .subtitle { text-align: center; color: var(--text-muted); margin-bottom: 30px; font-size: 14px; }
 
-    /* ===== Password Display ===== */
     .password-display {
       background: var(--code-bg); color: var(--code-text);
       padding: 24px 20px;
@@ -194,7 +193,6 @@
       50% { background: rgba(99, 102, 241, 0.25); }
     }
 
-    /* ===== Strength Meter ===== */
     .strength-container {
       margin-bottom: 24px;
     }
@@ -222,7 +220,6 @@
     .strength-text.medium { color: var(--warning); }
     .strength-text.strong { color: var(--success); }
 
-    /* ===== Length Slider ===== */
     .length-group {
       margin-bottom: 20px;
     }
@@ -267,7 +264,6 @@
       box-shadow: 0 2px 8px var(--accent-glow);
     }
 
-    /* ===== Options ===== */
     .options-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -321,7 +317,6 @@
       margin-top: 2px;
     }
 
-    /* ===== Buttons ===== */
     .buttons {
       display: flex; gap: 0; flex-wrap: wrap; border: 1px solid var(--border);
     }
@@ -344,7 +339,6 @@
     }
     button.action.primary:hover { filter: brightness(1.1); color: #fff; }
 
-    /* ===== FAQ ===== */
     .seo-content { margin-top: 40px; padding-top: 30px;
       border-top: 1px solid var(--border); color: var(--text);
       font-size: 14px; line-height: 1.9;
@@ -426,10 +420,8 @@
     <h1 id="title">🔐 مولد رمز عبور امن</h1>
     <p class="subtitle" id="subtitle">رمز عبور قوی و امن بساز — با قدرت‌سنجی و تنظیمات دلخواه</p>
 
-    <!-- Password Display -->
     <div class="password-display" id="passwordDisplay" dir="ltr">—</div>
 
-    <!-- Strength Meter -->
     <div class="strength-container">
       <div class="strength-bar" id="strengthBar">
         <div class="strength-segment"></div>
@@ -444,7 +436,6 @@
       </div>
     </div>
 
-    <!-- Length Slider -->
     <div class="length-group">
       <div class="length-header">
         <label data-i18n="lengthLabel">طول رمز عبور</label>
@@ -453,7 +444,6 @@
       <input type="range" id="lengthSlider" min="4" max="64" value="16" step="1">
     </div>
 
-    <!-- Options -->
     <div class="options-grid">
       <div class="option-item checked" data-option="lowercase">
         <div class="option-checkbox"></div>
@@ -492,13 +482,11 @@
       </div>
     </div>
 
-    <!-- Buttons -->
     <div class="buttons">
       <button id="generateBtn" class="action primary" data-i18n="btnGenerate">🔄 تولید رمز عبور</button>
       <button id="copyBtn" class="action" data-i18n="btnCopy">📋 کپی</button>
     </div>
 
-    <!-- SEO Content -->
     <section class="seo-content">
       <h2 data-i18n="seoH2">درباره‌ی مولد رمز عبور</h2>
       <p data-i18n="seoP1">مولد رمز عبور آنلاین و رایگان ما به شما کمک می‌کند تا در لحظه پسوردهای قوی و امن بسازید. تمام پردازش‌ها در مرورگر خود شما انجام می‌شود و هیچ رمزی به سرور ارسال یا ذخیره نمی‌شود.</p>
@@ -547,7 +535,6 @@
   </main>
 
   <script>
-    // ============ STATE ============
     let options = {
       lowercase: true,
       uppercase: true,
@@ -557,7 +544,6 @@
     };
     let currentPassword = '';
 
-    // ============ CHARACTER SETS ============
     const CHARSETS = {
       lowercase: 'abcdefghijklmnopqrstuvwxyz',
       uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -566,7 +552,6 @@
     };
     const SIMILAR_CHARS = 'il1Lo0O';
 
-    // ============ DOM ELEMENTS ============
     const html = document.documentElement;
     const titleEl = document.getElementById('title');
     const subtitleEl = document.getElementById('subtitle');
@@ -581,7 +566,6 @@
     const optionItems = document.querySelectorAll('.option-item');
     const langBtns = document.querySelectorAll('.lang-btn');
 
-    // ============ TRANSLATIONS ============
     const translations = {
       fa: {
         title: '🔐 مولد رمز عبور امن',
@@ -722,7 +706,6 @@
     if (!translations[currentLang]) currentLang = 'fa';
     let currentTheme = localStorage.getItem('pw_theme') || 'light';
 
-    // ============ THEME ============
     function applyTheme(theme) {
       html.setAttribute('data-theme', theme);
       themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
@@ -736,7 +719,6 @@
       applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
     });
 
-    // ============ LANGUAGE ============
     function t(key) {
       return translations[currentLang][key] || translations.en[key] || key;
     }
@@ -768,15 +750,12 @@
       btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
     });
 
-    // ============ RANDOM ============
     function getRandomInt(max) {
-      // Cryptographically secure random
       const array = new Uint32Array(1);
       crypto.getRandomValues(array);
       return array[0] % max;
     }
 
-    // ============ PASSWORD GENERATION ============
     function buildCharset() {
       let charset = '';
       if (options.lowercase) charset += CHARSETS.lowercase;
@@ -815,20 +794,17 @@
       updateStrength(password);
     }
 
-    // ============ STRENGTH ============
     function calculateStrength(password) {
       if (!password) return { score: 0, level: 'none' };
 
       let score = 0;
       const length = password.length;
 
-      // Length points
       if (length >= 8) score += 1;
       if (length >= 12) score += 1;
       if (length >= 16) score += 1;
       if (length >= 24) score += 1;
 
-      // Character variety
       let varietyCount = 0;
       if (/[a-z]/.test(password)) varietyCount++;
       if (/[A-Z]/.test(password)) varietyCount++;
@@ -837,13 +813,9 @@
 
       score += varietyCount;
 
-      // Determine level
       let level = 'weak';
       if (score >= 7) level = 'strong';
       else if (score >= 5) level = 'medium';
-
-      // Very strong check
-      if (score >= 7 && length >= 16 && varietyCount === 4) level = 'strong';
 
       return { score: Math.min(score, 7), level };
     }
@@ -864,7 +836,6 @@
 
       if (!password || level === 'none') {
         strengthText.textContent = t('strengthNone');
-        strengthText.classList.remove('weak', 'medium', 'strong');
       } else if (level === 'weak') {
         strengthText.textContent = t('strengthWeak');
         strengthText.classList.add('weak');
@@ -881,7 +852,6 @@
       if (currentPassword) updateStrength(currentPassword);
     }
 
-    // ============ EVENT LISTENERS ============
     lengthSlider.addEventListener('input', () => {
       lengthValue.textContent = lengthSlider.value;
       generatePassword();
@@ -909,7 +879,6 @@
       });
     });
 
-    // ============ INIT ============
     applyTheme(currentTheme);
     applyLanguage(currentLang);
     generatePassword();
